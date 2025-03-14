@@ -9,6 +9,12 @@
       <change afterPath="$PROJECT_DIR$/../../djangoProject/user/forms.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../djangoProject/user/managers.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../../djangoProject/user/signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_instagramm/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_instagramm/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_instagramm/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_instagramm/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_instagramm/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_instagramm/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_instagramm/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_instagramm/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +29,20 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;habubello&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/habubello/serializers.git&quot;,
+    &quot;accountId&quot;: &quot;6e3f77a8-3e6c-4f98-baec-ea3590acc6ed&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -37,7 +55,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -91,7 +109,8 @@
       <workItem from="1741701778695" duration="1380000" />
       <workItem from="1741710375825" duration="1254000" />
       <workItem from="1741803941796" duration="5193000" />
-      <workItem from="1741811931465" duration="2423000" />
+      <workItem from="1741811931465" duration="2852000" />
+      <workItem from="1741982070952" duration="4481000" />
     </task>
     <servers />
   </component>

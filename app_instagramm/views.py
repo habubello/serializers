@@ -1,48 +1,64 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-# from rest_framework.permissions import AllowAny
+from rest_framework.generics import GenericAPIView
+from rest_framework import mixins
+from app_instagramm.models import Product, Category
+from app_instagramm.serializers import ProductSerializer, CategorySerializer
 
-from django.shortcuts import get_object_or_404
-from app_instagramm.models import Product
-from app_instagramm.serializers import ProductSerializer
+#bu kategoriya uchun crud
+class CategoryListCreateView(mixins.ListModelMixin,
+                             mixins.CreateModelMixin,
+                             GenericAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
-class ProductAPIView(APIView):
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
 
-
-
-    def get(self, request, pk=None):
-        if pk:
-            product = get_object_or_404(Product, pk=pk)
-            serializer = ProductSerializer(product)
-        else:
-            products = Product.objects.all()
-            serializer = ProductSerializer(products, many=True)
-        return Response(serializer.data)
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
 
 
+class CategoryDetailView(mixins.RetrieveModelMixin,
+                         mixins.UpdateModelMixin,
+                         mixins.DestroyModelMixin,
+                         GenericAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
 
-    def post(self, request):
-        serializer = ProductSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
+
+#bu product uchun crud
+class ProductListCreateView(mixins.ListModelMixin,
+                            mixins.CreateModelMixin,
+                            GenericAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
 
 
+class ProductDetailView(mixins.RetrieveModelMixin,
+                        mixins.UpdateModelMixin,
+                        mixins.DestroyModelMixin,
+                        GenericAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
 
-    def put(self, request, pk):
-        product = get_object_or_404(Product, pk=pk)
-        serializer = ProductSerializer(product, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    def get(self, request, *args, **kwargs):
+        return self.retrieve(request, *args, **kwargs)
 
+    def put(self, request, *args, **kwargs):
+        return self.update(request, *args, **kwargs)
 
-
-
-    def delete(self, request, pk):
-        product = get_object_or_404(Product, pk=pk)
-        product.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    def delete(self, request, *args, **kwargs):
+        return self.destroy(request, *args, **kwargs)
