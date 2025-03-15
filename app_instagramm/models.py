@@ -31,3 +31,15 @@ class Product(models.Model):
     class Meta:
         verbose_name = 'Product'
         verbose_name_plural = 'Products'
+
+
+
+
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name="images")
+    image = models.ImageField(upload_to="product_images/", verbose_name="Изображение")
+    uploaded_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата загрузки")
+
+    def __str__(self):
+        return f"Image for {self.product.name}"
