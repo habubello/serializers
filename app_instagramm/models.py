@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -23,7 +24,7 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='created')
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Updated')
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products', verbose_name='Category')
-
+    likes = models.ManyToManyField(User,blank=True)
 
     def __str__(self):
         return self.name
@@ -43,3 +44,14 @@ class ProductImage(models.Model):
 
     def __str__(self):
         return f"Image for {self.product.name}"
+
+
+
+class Comment(models.Model):
+    content = models.TextField(),
+    user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='comment_user')
+    product = models.ForeignKey(Product,on_delete=models.CASCADE,related_name='product_comment')
+    created_at = models.DateTimeField()
+    rating = models.SmallIntegerField()
+    image = models.FileField(upload_to="comment_images")
+

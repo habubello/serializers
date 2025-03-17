@@ -1,5 +1,5 @@
 from django.contrib import admin
-from app_instagramm.models import Product , ProductImage,Category
+from app_instagramm.models import Product , ProductImage,Category,Comment
 # Register your models here.
 
 admin.site.register(Category)
@@ -12,3 +12,4 @@ class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductImageInline]
 
 admin.site.register(ProductImage)
+admin.site.register(Comment)

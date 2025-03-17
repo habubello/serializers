@@ -1,7 +1,7 @@
-from rest_framework.generics import GenericAPIView
+from rest_framework.generics import GenericAPIView,ListAPIView
 from rest_framework import mixins
-from app_instagramm.models import Product, Category
-from app_instagramm.serializers import ProductSerializer, CategorySerializer
+from app_instagramm.models import Product, Category, Comment
+from app_instagramm.serializers import ProductSerializer, CategorySerializer,CommentSerializer
 
 #bu kategoriya uchun crud
 class CategoryListCreateView(mixins.ListModelMixin,
@@ -62,3 +62,17 @@ class ProductDetailView(mixins.RetrieveModelMixin,
 
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
+
+
+class CommentListView(ListAPIView):
+    serializer_class = CommentSerializer
+    queryset = Comment.objects.all()
+
+
+
+class ProductCommentListView(ListAPIView):
+    serializer_class = CommentSerializer
+
+    def get_queryset(self):
+        product_id = self.kwargs['product_id']
+        return Comment.objects.filter(product_id=product_id)
