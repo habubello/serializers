@@ -51,7 +51,7 @@ class Comment(models.Model):
     content = models.TextField(),
     user = models.ForeignKey(User, on_delete=models.CASCADE,related_name='comment_user')
     product = models.ForeignKey(Product,on_delete=models.CASCADE,related_name='product_comment')
-    created_at = models.DateTimeField()
-    rating = models.SmallIntegerField()
+    created_at = models.DateTimeField(auto_now_add=True),
+    rating = models.SmallIntegerField(),
     image = models.FileField(upload_to="comment_images")
 

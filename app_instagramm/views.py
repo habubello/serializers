@@ -1,7 +1,17 @@
+from django.http import JsonResponse
 from rest_framework.generics import GenericAPIView,ListAPIView
 from rest_framework import mixins
 from app_instagramm.models import Product, Category, Comment
 from app_instagramm.serializers import ProductSerializer, CategorySerializer,CommentSerializer
+from rest_framework.viewsets import ModelViewSet
+from .models import Comment
+from .permissions import CannotDeleteAfterTwoMinutes,IsWeekday
+from .serializers import CommentSerializer
+
+class CommentViewSet(ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+    permission_classes = [CannotDeleteAfterTwoMinutes, IsWeekday]
 
 #bu kategoriya uchun crud
 class CategoryListCreateView(mixins.ListModelMixin,
@@ -76,3 +86,12 @@ class ProductCommentListView(ListAPIView):
     def get_queryset(self):
         product_id = self.kwargs['product_id']
         return Comment.objects.filter(product_id=product_id)
+
+
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+
+@method_decorator(csrf_exempt, name='dispatch')
+class MyApiView(ProductDetailView):
+    def post(self, request):
+        return JsonResponse({"message": "CSRF отключён"})
