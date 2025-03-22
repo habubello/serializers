@@ -53,7 +53,7 @@ class CategoryDetailView(mixins.RetrieveModelMixin,
 class ProductListCreateView(mixins.ListModelMixin,
                             mixins.CreateModelMixin,
                             GenericAPIView):
-    queryset = Product.objects.all()
+    products = Product.objects.only('id', 'name', 'price')
     serializer_class = ProductSerializer
 
     def get(self, request, *args, **kwargs):
